@@ -52,7 +52,7 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
           name="city"
           aria-label="Filter by city"
           className="form-select flex-1"
-          value={initial.city ? "humanizeKey(initial.city) ": ""}
+          value={initial.city ?? ""}
           onChange={(e) => updateParam("city", e.target.value || undefined)}
         >
           <option value="">All cities</option>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import api from "@/lib/api";
 import type { Job } from "@/shared/constants/types";
 import ApplyModal from "@/app/components/ApplyModal";
+import Navbar from "@/app/components/Navbar";
 import { humanizeKey } from "@/helpers";
 
 type Params = { params: Promise<{ id: string }>; searchParams: Promise<{ skip?: string; limit?: string; contractType?: string }> };
@@ -31,6 +32,8 @@ export default async function JobDetailsPage({ params, searchParams }: Params) {
         );
     }
     return (
+        <>
+        <Navbar />
         <main className="mx-auto max-w-4xl p-4">
             <h1 className="text-2xl font-bold text-gray-900">{job.position}</h1>
             <p className="text-gray-600">{job.partnerName}</p>
@@ -68,6 +71,7 @@ export default async function JobDetailsPage({ params, searchParams }: Params) {
                 <ApplyModal />
             </div>
         </main>
+        </>
     );
 }
 
