@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Job Seeker – Frontend
 
-## Getting Started
+A modern Next.js App Router project that lists jobs, supports filtering and pagination, and renders SEO-friendly job detail pages.
 
-First, run the development server:
+### Architecture overview
+
+- App Router (Next.js 14+) with SSR by default for pages
+  - `app/page.tsx`: Server component. Fetches jobs (max 10 per request), reads `searchParams` for filtering and pagination, and renders the list.
+  - `app/jobs/[id]/page.tsx`: Server component. Fetches a single job by id on the server and defines `generateMetadata` for SEO (dynamic title/description).
+- Client components for interactivity
+  - `app/components/Filters.tsx`: Updates URL query params (category, city, experience, english) and preserves shareable URLs.
+  - `app/components/Pagination.tsx`: Updates `skip` and `limit` query params.
+  - `app/components/ApplyModal.tsx`: Accessible modal for applying to a job (full name + email validation).
+- API layer
+  - `lib/axios.ts`: Central axios instance with an interceptor that logs non-2xx responses.
+  - `lib/api.ts`: Typed helpers: `listAllJobs(skip, limit, contractType)` and `getJobById(id)`.
+  - `shared/constants/endpoints.ts`: Single source for REST endpoints.
+  - `shared/constants/types.ts`: Domain types (`Job`, response shapes, etc.).
+- Styling
+  - Tailwind CSS with centralized component utility classes in `app/globals.css` (`.card`, `.btn-primary`, `.form-select`, `.focus-ring`, etc.).
+
+### Required environment variables
+
+Create `.env.local` in the project root with:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+NEXT_PUBLIC_API_BASE_URL=https://api.example.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `NEXT_PUBLIC_API_BASE_URL` must point to your backend base URL that serves the endpoints defined in `shared/constants/endpoints.ts`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Install & run
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+# App runs at http://localhost:3000
+```
 
-## Learn More
+### Usage notes
 
-To learn more about Next.js, take a look at the following resources:
+- Pagination: controlled by `skip` and `limit` query params (limit is capped at 10).
+- Filters: `category`, `city`, `experience` (required | not_required), `english` (required | not_required) are read from URL and applied server-side in `app/page.tsx`.
+- Job details: navigates to `/jobs/[id]` and fetches the job via `getJobById` using the dedicated endpoint.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Project structure (key files)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+  components/
+    ApplyModal.tsx
+    Card.tsx
+    Filters.tsx
+    Navbar.tsx
+    Pagination.tsx
+  jobs/[id]/page.tsx
+  layout.tsx
+  page.tsx
+lib/
+  api.ts
+  axios.ts
+shared/constants/
+  endpoints.ts
+  types.ts
+```
 
-## Deploy on Vercel
+### Axios interceptor behavior
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Logs an error for any non-2xx response status
+- Logs details for failed requests (network errors, timeouts, etc.)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
