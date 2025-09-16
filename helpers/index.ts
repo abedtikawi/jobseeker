@@ -6,3 +6,12 @@ export function humanizeKey(key: string): string {
         .replace(/\b\w/g, (char) => char.toUpperCase());
 };
 
+export function stripHtml(value: string): string {
+    if (!value) return "";
+    // Remove HTML tags and normalize common entities/spaces
+    return value
+        .replace(/<[^>]*>/g, "")
+        .replace(/&nbsp;/g, " ")
+        .trim();
+}
+
