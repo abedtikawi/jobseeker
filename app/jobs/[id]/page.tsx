@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import api from "@/lib/api";
 import type { Job } from "@/shared/constants/types";
 import ApplyModal from "@/app/components/ApplyModal";
+import { humanizeKey } from "@/helpers";
 
 type Params = { params: Promise<{ id: string }>; searchParams: Promise<{ skip?: string; limit?: string; contractType?: string }> };
 
@@ -50,7 +51,7 @@ export default async function JobDetailsPage({ params, searchParams }: Params) {
                         </tr>
                         <tr>
                             <th className="bg-gray-50 p-3 text-left text-sm font-medium ">City</th>
-                            <td className="p-3 text-sm">{job.city || job.cityValue}</td>
+                            <td className="p-3 text-sm">{humanizeKey(job.city || job.cityValue)}</td>
                         </tr>
                         <tr>
                             <th className="bg-gray-50 p-3 text-left text-sm font-medium ">Contract Type</th>

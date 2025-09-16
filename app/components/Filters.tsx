@@ -1,6 +1,7 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FiltersProps } from "@/shared/constants/types";
+import { humanizeKey } from "@/helpers";
 
 
 
@@ -51,12 +52,12 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
           name="city"
           aria-label="Filter by city"
           className="form-select flex-1"
-          value={initial.city ?? ""}
+          value={initial.city ? "humanizeKey(initial.city) ": ""}
           onChange={(e) => updateParam("city", e.target.value || undefined)}
         >
           <option value="">All cities</option>
           {cities.map((c) => (
-            <option key={c} value={c}>{c}</option>
+            <option key={c} value={c}>{humanizeKey(c)}</option>
           ))}
         </select>
       </div>

@@ -1,5 +1,6 @@
 import { Job } from "@/shared/constants/types";
 import Link from "next/link";
+import { humanizeKey } from "@/helpers";
 
 
 export default function Card({ props, query }: { props: Job; query?: { skip?: string; limit?: string; contractType?: string } }) {
@@ -13,8 +14,7 @@ export default function Card({ props, query }: { props: Job; query?: { skip?: st
         <Link href={`/jobs/${jobId}?${queryString}`} className="card card-hover focus-ring block">
             <article className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
                 <header className="min-w-0">
-                    <h3 className="truncate text-lg font-semibold text-gray-900" title={props.position}>{props.position}</h3>
-                    <p className="truncate-muted" title={props.partnerName}>{props.partnerName}</p>
+                    <h3 className="truncate text-lg font-semibold text-gray-900" title={humanizeKey(props.position)}>{humanizeKey(props.position)}</h3>
                 </header>
                 <dl className="grid grid-cols-2 gap-3 text-sm md:grid-cols-3">
                     <div className="min-w-0 truncate">
@@ -27,7 +27,7 @@ export default function Card({ props, query }: { props: Job; query?: { skip?: st
                     </div>
                     <div className="min-w-0 truncate md:text-right">
                         <dt className="text-gray-500">City</dt>
-                        <dd className="font-medium">{props.city || props.cityValue}</dd>
+                        <dd className="font-medium">{humanizeKey(props.city || props.cityValue)}</dd>
                     </div>
                 </dl>
             </article>
