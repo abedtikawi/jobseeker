@@ -40,7 +40,7 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
         >
           <option value="">All categories</option>
           {categories.map((c) => (
-            <option key={c} value={c}>{c}</option>
+            <option key={c} value={c}>{humanizeKey(c)}</option>
           ))}
         </select>
       </div>
