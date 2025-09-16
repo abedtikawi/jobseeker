@@ -29,33 +29,33 @@ export default function Card({ props, query }: { props: Job; query?: { skip?: st
                 </div>
                 <div className="min-w-0">
                     <header className="min-w-0 space-y-1 border-b border-gray-100 pb-2">
-                        <h3 className="truncate text-xl font-semibold text-gray-900" title={props.jobPositionValue}>{props.jobPositionValue}</h3>
-                        <p className="truncate-muted" title={props.partnerName}>{props.partnerName}</p>
+                        <h3 className="truncate text-xl font-semibold text-black" title={props.jobPositionValue}>{props.jobPositionValue}</h3>
+                        <p className="truncate-muted text-[#1DB954]" title={props.partnerName}>{props.partnerName}</p>
                     </header>
                     <div className="mt-3 grid gap-4 md:grid-cols-2">
                         <div>
-                            <dt className="text-gray-500 text-sm">Description</dt>
+                            <dt className="text-purple-700 text-sm ">Description</dt>
                             <dd className="text-sm text-gray-700 line-clamp-6">{props.translatedDescription || props.description}</dd>
                         </div>
                         <dl className="grid grid-cols-2 gap-3 text-sm">
                             <div className="min-w-0 truncate">
-                                <dt className="text-gray-500">Experience</dt>
+                                <dt className="text-purple-700">Experience</dt>
                                 <dd className="font-medium">{props.requiresExperience ? props.experienceYears || "Required" : "Not required"}</dd>
                             </div>
                             <div className="min-w-0 truncate">
-                                <dt className="text-gray-500">City</dt>
+                                <dt className="text-purple-700">City</dt>
                                 <dd className="font-medium">{humanizeKey(props.city || props.cityValue)}</dd>
                             </div>
                             <div className="min-w-0 truncate">
-                                <dt className="text-gray-500">Country</dt>
+                                <dt className="text-purple-700">Country</dt>
                                 <dd className="font-medium">{humanizeKey(props.countryValue)}</dd>
                             </div>
                             <div className="min-w-0 truncate">
-                                <dt className="text-gray-500">Workplace</dt>
+                                <dt className="text-purple-700">Workplace</dt>
                                 <dd className="font-medium">{props.workplaceType}</dd>
                             </div>
                             <div className="min-w-0 truncate">
-                                <dt className="text-gray-500">Salary</dt>
+                                <dt className="text-[#1DB954]">Salary</dt>
                                 <dd className="font-medium">{props.salary} {props.currency}</dd>
                             </div>
                         </dl>

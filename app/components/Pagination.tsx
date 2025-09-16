@@ -32,7 +32,7 @@ export default function Pagination() {
         </button>
         <button
           type="button"
-          className="btn-primary focus-ring"
+          className="btn-primary focus-ring text-[#1DB954]"
           onClick={() => setParam("skip", String(skip + limit))}
         >
           Next

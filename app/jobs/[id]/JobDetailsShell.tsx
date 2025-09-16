@@ -23,14 +23,14 @@ export default function JobDetailsShell({ job, avatar }: { job: Job; avatar?: st
               )}
             </div>
             <div className="min-w-0">
-              <h1 className="truncate text-2xl font-bold" title={job.jobPositionValue || job.position}>{job.jobPositionValue || job.position}</h1>
-              <p className="truncate text-sm text-gray-600 mt-1" title={job.partnerName}>{job.partnerName}</p>
+              <h1 className="truncate text-2xl font-bold " title={job.jobPositionValue || job.position}>{job.jobPositionValue || job.position}</h1>
+              <p className="truncate text-sm text-[#1DB954] mt-1" title={job.partnerName}>{job.partnerName}</p>
             </div>
           </div>
           <div className="mt-5 grid gap-6 md:grid-cols-3">
             <div className="md:col-span-2 flex flex-col">
               <div className="flex items-center justify-between">
-                <dt className="text-gray-500 text-sm">Description</dt>
+                <dt className="text-purple-700 text-sm">Description</dt>
                 <div className="flex items-center gap-2">
                   <button type="button" className={`px-2 py-1 text-xs rounded-md border ${!useTranslated ? "bg-black text-white border-black" : "bg-white text-black border-gray-300"}`} onClick={() => setUseTranslated(false)}>English</button>
                   <button type="button" className={`px-2 py-1 text-xs rounded-md border ${useTranslated ? "bg-black text-white border-black" : "bg-white text-black border-gray-300"}`} onClick={() => setUseTranslated(true)}>Arabic</button>
@@ -42,11 +42,11 @@ export default function JobDetailsShell({ job, avatar }: { job: Job; avatar?: st
               <div className="my-4 border-t border-gray-200" />
               <dl className="grid grid-cols-2 gap-4 text-sm mt-auto">
                 <div className="min-w-0 truncate">
-                  <dt className="text-gray-500">Requires Health Card</dt>
+                  <dt className="text-purple-700">Requires Health Card</dt>
                   <dd className="font-medium">{job.requiresHealthCard ? "Yes" : "No"}</dd>
                 </div>
                 <div className="min-w-0 truncate">
-                  <dt className="text-gray-500">Requires Experience</dt>
+                  <dt className="text-purple-700">Requires Experience</dt>
                   <dd className="font-medium">{job.requiresExperience ? "Yes" : "No"}</dd>
                 </div>
               </dl>
@@ -54,51 +54,51 @@ export default function JobDetailsShell({ job, avatar }: { job: Job; avatar?: st
             <div className="md:hidden col-span-3 border-t border-gray-200" />
             <dl className="grid grid-cols-2 gap-4 text-sm md:border-l md:pl-6">
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Salary</dt>
+                <dt className="text-[#1DB954]">Salary</dt>
                 <dd className="font-medium">{job.salary} {job.currency}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Salary Frequency</dt>
+                <dt className="text-purple-700">Salary Frequency</dt>
                 <dd className="font-medium">{humanizeKey(job.salaryFrequency)}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Contract</dt>
+                <dt className="text-purple-700">Contract</dt>
                 <dd className="font-medium">{humanizeKey(job.contractType)}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Experience</dt>
+                <dt className="text-purple-700">Experience</dt>
                 <dd className="font-medium">{job.requiresExperience ? job.experienceYears || "Required" : "Not required"}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">English</dt>
+                <dt className="text-purple-700">English</dt>
                 <dd className="font-medium">{job.requiresEnglish ? "Required" : "Not required"}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Gender</dt>
+                <dt className="text-purple-700">Gender</dt>
                 <dd className="font-medium">{humanizeKey(job.gender) || "-"}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">City</dt>
+                <dt className="text-purple-700">City</dt>
                 <dd className="font-medium">{humanizeKey(job.city || job.cityValue)}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">District</dt>
+                <dt className="text-purple-700">District</dt>
                 <dd className="font-medium">{humanizeKey(job.districtValue)}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Address</dt>
+                <dt className="text-purple-700">Address</dt>
                 <dd className="font-medium">{job.address || "-"}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Created</dt>
+                <dt className="text-purple-700">Created</dt>
                 <dd className="font-medium">{new Date(job.createdDate).toLocaleDateString()}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Status</dt>
+                <dt className="text-purple-700">Status</dt>
                 <dd className="font-medium">{humanizeKey(job.jobStatus)}</dd>
               </div>
               <div className="min-w-0 truncate">
-                <dt className="text-gray-500">Workplace</dt>
+                <dt className="text-purple-700">Workplace</dt>
                 <dd className="font-medium">{humanizeKey(job.workplaceType)}</dd>
               </div>
             </dl>
@@ -107,7 +107,7 @@ export default function JobDetailsShell({ job, avatar }: { job: Job; avatar?: st
       </section>
       <aside className="md:col-span-1">
         <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md md:sticky md:top-20 font-mono text-black">
-          <h2 className="text-xl font-semibold">Submit Application</h2>
+          <h2 className="text-xl font-semibold text-purple-700">Submit Application</h2>
           <p className="text-sm text-gray-600 mt-1">Send your basic info to proceed.</p>
           <div className="mt-4">
             <ApplyInlineCard open={open} onOpenChange={setOpen} />

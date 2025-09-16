@@ -29,7 +29,7 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <label htmlFor="category" className="text-sm text-gray-700 w-28">Category</label>
+        <label htmlFor="category" className="text-sm text-purple-700 w-28">Category</label>
         <select
           id="category"
           name="category"
@@ -46,7 +46,7 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
       </div>
 
       <div className="flex items-center gap-2">
-        <label htmlFor="city" className="text-sm text-gray-700 w-28">City</label>
+        <label htmlFor="city" className="text-sm text-purple-700 w-28">City</label>
         <select
           id="city"
           name="city"
@@ -63,7 +63,7 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
       </div>
 
       <div className="flex items-center gap-2">
-        <label htmlFor="experience" className="text-sm text-gray-700 w-28">Experience</label>
+        <label htmlFor="experience" className="text-sm text-purple-700 w-28">Experience</label>
         <select
           id="experience"
           name="experience"
@@ -79,7 +79,7 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
       </div>
 
       <div className="flex items-center gap-2">
-        <label htmlFor="english" className="text-sm text-gray-700 w-28">English</label>
+        <label htmlFor="english" className="text-sm text-purple-700 w-28">English</label>
         <select
           id="english"
           name="english"
@@ -95,7 +95,7 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
       </div>
 
       <div>
-        <button type="button" onClick={resetFilters} className="btn-primary focus-ring w-full">Reset</button>
+        <button type="button" onClick={resetFilters} className="btn-primary focus-ring w-full text-[#1DB954]">Reset</button>
       </div>
     </div>
   );

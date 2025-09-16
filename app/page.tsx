@@ -36,12 +36,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
       <Navbar />
       <main id="main" className="font-mono min-h-screen p-3 sm:p-4 text-black">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-2xl font-bold text-center mt-10">Find Your <span className="text-[#1DB954]">Dream Job</span></h1>
+          <h1 className="text-2xl font-bold text-center mt-10 text-purple-700">Find Your <span className="text-[#1DB954]">Dream Job</span></h1>
           <p className="text-sm text-gray-500 text-center">Find the perfect job for you</p>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-4 ">
           <div className="flex-row md:col-span-1 h-full p-3 rounded-md md:sticky md:top-20 md:self-start md:max-h-[calc(100vh-5rem)] md:overflow-auto md:z-40 bg-white border border-gray-200 shadow-sm">
-            <h2 className="text-lg font-bold ">Filters</h2>
+            <h2 className="text-lg font-bold text-[#1DB954] ">Filters</h2>
             <Filters
               categories={Array.from(categoriesSet).sort()}
               cities={Array.from(citiesSet).sort()}

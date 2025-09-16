@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Breadcrumbs() {
+export default function Breadcrumbs({ lastLabel }: { lastLabel?: string }) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean).filter((seg) => seg !== "jobs");
 
@@ -15,15 +15,15 @@ export default function Breadcrumbs() {
     <nav aria-label="Breadcrumb" className="text-sm text-gray-600">
       <ol className="flex flex-wrap items-center gap-1">
         <li>
-          <Link href="/" className="focus-ring hover:underline">Home</Link>
+          <Link href="/" className="focus-ring hover:underline text-purple-700">Home</Link>
         </li>
         {crumbs.map((c, i) => (
           <li key={c.href} className="flex items-center gap-1">
             <span>/</span>
             {i < crumbs.length - 1 ? (
-              <Link href={c.href} className="focus-ring hover:underline">{c.label}</Link>
+              <Link href={c.href} className="focus-ring hover:underline ">{c.label}</Link>
             ) : (
-              <span aria-current="page" className="text-gray-800">{c.label}</span>
+              <span aria-current="page" className="text-[#1DB954] font-bold ">{lastLabel ?? c.label}</span>
             )}
           </li>
         ))}

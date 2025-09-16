@@ -37,7 +37,7 @@ export default async function JobDetailsPage({ params, searchParams }: Params) {
         <>
             <Navbar />
             <main className="mx-auto max-w-6xl p-5">
-                <Breadcrumbs />
+                <Breadcrumbs lastLabel={job.jobPositionValue || job.position} />
                 <div className="mt-5">
                     <JobDetailsShell job={job} avatar={avatar} />
                 </div>
