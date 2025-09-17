@@ -47,7 +47,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
             {filtered.map((job) => (
               <Card props={job} key={job.id} query={{ skip: String(safeSkip), limit: String(safeLimit), contractType: job.contractType }} />
             ))}
-            <Pagination />
+            <Pagination totalCount={Number(jobsResponse?.data?.jobsCount || 0)} />
           </div>
         </div>
       </main>
