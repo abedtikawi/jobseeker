@@ -1,11 +1,10 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FiltersProps } from "@/shared/constants/types";
-import { humanizeKey } from "@/helpers";
 
 
 
-export default function Filters({ categories, cities, initial }: FiltersProps) {
+export default function Filters({ initial }: FiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -22,45 +21,13 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
 
   function resetFilters() {
     const params = new URLSearchParams(searchParams?.toString());
-    ["category", "city", "experience", "english"].forEach((k) => params.delete(k));
+    ["experience", "workplaceType", "contractType"].forEach((k) => params.delete(k));
     router.push(`${pathname}?${params.toString()}`);
   }
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        <label htmlFor="category" className="text-sm text-purple-700 w-28">Category</label>
-        <select
-          id="category"
-          name="category"
-          aria-label="Filter by category"
-          className="form-select flex-1"
-          value={initial.category ?? ""}
-          onChange={(e) => updateParam("category", e.target.value || undefined)}
-        >
-          <option value="">All categories</option>
-          {categories.map((c) => (
-            <option key={c} value={c}>{humanizeKey(c)}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="flex items-center gap-2">
-        <label htmlFor="city" className="text-sm text-purple-700 w-28">City</label>
-        <select
-          id="city"
-          name="city"
-          aria-label="Filter by city"
-          className="form-select flex-1"
-          value={initial.city ?? ""}
-          onChange={(e) => updateParam("city", e.target.value || undefined)}
-        >
-          <option value="">All cities</option>
-          {cities.map((c) => (
-            <option key={c} value={c}>{humanizeKey(c)}</option>
-          ))}
-        </select>
-      </div>
+      
 
       <div className="flex items-center gap-2">
         <label htmlFor="experience" className="text-sm text-purple-700 w-28">Experience</label>
@@ -79,18 +46,35 @@ export default function Filters({ categories, cities, initial }: FiltersProps) {
       </div>
 
       <div className="flex items-center gap-2">
-        <label htmlFor="english" className="text-sm text-purple-700 w-28">English</label>
+        <label htmlFor="workplaceType" className="text-sm text-purple-700 w-28">Workplace</label>
         <select
-          id="english"
-          name="english"
-          aria-label="English required"
+          id="workplaceType"
+          name="workplaceType"
+          aria-label="Workplace type"
           className="form-select flex-1"
-          value={initial.english ?? ""}
-          onChange={(e) => updateParam("english", e.target.value || undefined)}
+          value={searchParams.get("workplaceType") ?? ""}
+          onChange={(e) => updateParam("workplaceType", e.target.value || undefined)}
         >
           <option value="">Any</option>
-          <option value="required">Required</option>
-          <option value="not_required">Not required</option>
+          <option value="ON_SITE">On-site</option>
+          <option value="REMOTE">Remote</option>
+          <option value="FIELD">Field</option>
+        </select>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <label htmlFor="contractType" className="text-sm text-purple-700 w-28">Contract</label>
+        <select
+          id="contractType"
+          name="contractType"
+          aria-label="Contract type"
+          className="form-select flex-1"
+          value={searchParams.get("contractType") ?? ""}
+          onChange={(e) => updateParam("contractType", e.target.value || undefined)}
+        >
+          <option value="">Any</option>
+          <option value="FULLTIME">Full-time</option>
+          <option value="PARTTIME">Part-time</option>
         </select>
       </div>
 

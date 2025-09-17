@@ -1,12 +1,9 @@
 export type ContractType = "FULLTIME" | "PARTTIME";
+export type WorkplaceType = "ON_SITE" | "REMOTE" | "FIELD";
+export type ExperienceRequired = "true" | "false";
 export type FiltersProps = {
-    categories: string[];
-    cities: string[];
     initial: {
-        category?: string;
-        city?: string;
         experience?: string;
-        english?: string;
     };
 };
 export interface IResponseJobList {
